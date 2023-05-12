@@ -16,7 +16,6 @@ class Post < ApplicationRecord
 
   # A method which returns the 5 most recent comments for a given post.
   def recent_comments
-    comments.last(5) 
+    comments.last(5)
   end
-
 end
