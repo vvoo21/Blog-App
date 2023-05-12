@@ -95,6 +95,7 @@ Create the database, execute the following command in Bash:
 
 ```sh
 rails db:create
+rails db:migrate
 ```
 
 ### Usage
@@ -111,7 +112,6 @@ To run the project tests, execute the following command:
 
 ```sh
  rspec spec
-```pec spec/
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
