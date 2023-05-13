@@ -2,9 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   let(:user) { User.create(name: 'David', photo: 'photo.png', bio: 'A full-stack developer') }
-  let(:subject) { Post.create(author: user, title: 'Hello rails', text: 'Rails is a web application framework running on the Ruby programming language') }
+  let(:subject) do
+    Post.create(author: user, title: 'Hello rails',
+                text: 'Rails is a web application framework running on the Ruby programming language')
+  end
 
-  before { user.save } 
+  before { user.save }
 
   it 'belongs to an author' do
     expect(subject.author).to eql user

@@ -2,9 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   let(:user) { User.new(name: 'David', photo: 'photo.png', bio: 'A full-stack developer', posts_counter: 0) }
-  let(:post) { Post.new(author: user, title: 'Hello rails', text: 'Rails is a web application framework running on the Ruby programming language', comments_counter: 0, likes_counter: 0) }
+  let(:post) do
+    Post.new(author: user, title: 'Hello rails',
+             text: 'Rails is a web application framework running on the Ruby programming language',
+             comments_counter: 0,
+             likes_counter: 0)
+  end
 
-  subject { Comment.new(post: post, author: user, text: 'Hi Vanessa!') }
+  subject { Comment.new(post:, author: user, text: 'Hi Vanessa!') }
 
   before { subject.save }
 

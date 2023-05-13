@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   def recent_comments
     comments.last(5)
   end
-  
+
   # A method that updates the posts counter for a user.
   def update_posts_counter
     author.increment!(:posts_counter)
