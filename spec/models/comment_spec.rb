@@ -13,27 +13,18 @@ RSpec.describe Comment, type: :model do
 
   before { subject.save }
 
+  describe 'validations' do
+    it { should validate_presence_of(:text) }
+    it { should validate_length_of(:text).is_at_least(2) }
+    it { should validate_length_of(:text).is_at_most(100) }
+  end
+
   it 'belongs to an author' do
     expect(subject.author).to eql user
   end
 
   it 'belongs to a post' do
     expect(subject.post).to eql post
-  end
-
-  it 'text should be present' do
-    subject.text = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'text should not to be too short' do
-    subject.text = 'H'
-    expect(subject).to_not be_valid
-  end
-
-  it 'text should not to be too long' do
-    subject.text = 'Hi Vanessa!' * 30
-    expect(subject).to_not be_valid
   end
 
   it 'increments the comments_counter of the post' do

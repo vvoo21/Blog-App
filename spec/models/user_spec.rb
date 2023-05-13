@@ -1,57 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { User.new(name: 'vanessa', photo: 'https://pixabay.com/photos/cat-baby-profile-animal-shelter-2671159/', bio: 'A passionate full-stack developer') }
+  subject { User.new(name: 'vanessa', photo: 'https://pixabay.com/photos/cat-baby-profile-animal-shelter-2671159/', bio: 'A passionate full-stack developer', posts_counter: 0) }
 
   before { subject.save }
 
-  it 'name should be present' do
-    subject.name = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'name should not to be too short' do
-    subject.name = 'v'
-    expect(subject).to_not be_valid
-  end
-
-  it 'photo should be present' do
-    subject.photo = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'photo should have a valid value' do
-    expect(subject.photo).to eql 'https://pixabay.com/photos/cat-baby-profile-animal-shelter-2671159/'
-  end
-
-  it 'bio should be present' do
-    subject.bio = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'bio should not to be too short' do
-    subject.name = 'developer'
-    expect(subject).to_not be_valid
-  end
-
-  it 'bio should not to be too long' do
-    subject.name = 'A passionate full-stack developer' * 30
-    expect(subject).to_not be_valid
-  end
-
-  it 'posts_counter should be present' do
-    subject.posts_counter = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'posts_counter should not to be less than 0' do
-    subject.posts_counter = -21
-    expect(subject).to_not be_valid
-  end
-
-  it 'posts_counter should not to be float' do
-    subject.posts_counter = 5.25
-    expect(subject).to_not be_valid
+  describe 'validations' do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:photo) }
+    it { should validate_presence_of(:bio) }
+    it { should validate_presence_of(:posts_counter) }
+    it { should validate_length_of(:bio).is_at_least(10) }
+    it { should validate_length_of(:bio).is_at_most(250) }
+    it { should validate_numericality_of(:posts_counter).is_greater_than_or_equal_to(0).only_integer }
   end
 
   it 'has many posts' do

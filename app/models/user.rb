@@ -3,10 +3,14 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  validates_presence_of :name, length: { minimum: 2 }
+  validates :name, presence: true, length: { minimum: 2 }
   validates :photo, presence: true
   validates :bio, presence: true, length: { in: 10..250 }
-  validates_numericality_of :posts_counter, only_integer: true, greater_than_or_equal_to: 0
+  validates :posts_counter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+
+
+
 
   def recent_posts
     posts.last(3)
