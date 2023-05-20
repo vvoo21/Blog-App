@@ -19,10 +19,13 @@ RSpec.describe 'Posts', type: :request do
     end
   end
 
-  describe "GET /show" do
-    let!(:post) { Post.create(author: user, title: 'Hello rails',
-      text: 'Rails is a web application framework running on the Ruby programming language', comments_counter: 0, likes_counter: 0) }
-    it "response status is success" do
+  describe 'GET /show' do
+    let!(:post) do
+      Post.create(author: user, title: 'Hello rails',
+                  text: 'Rails is a web application framework running on the Ruby programming language',
+                  comments_counter: 0, likes_counter: 0)
+    end
+    it 'response status is success' do
       get user_post_path(user.id, post.id)
       expect(response.status).to eq(200)
     end

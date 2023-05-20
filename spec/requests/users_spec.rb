@@ -18,9 +18,9 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe "GET /show" do
+  describe 'GET /show' do
     let!(:user) { User.create(name: 'vanessa', photo: 'https://pixabay.com/photos/cat-baby-profile-animal-shelter-2671159/', bio: 'A passionate full-stack developer', posts_counter: 0) }
-    it "response status is success" do
+    it 'response status is success' do
       get user_path(user.id)
       expect(response.status).to eq(200)
     end
