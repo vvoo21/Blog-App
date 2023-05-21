@@ -1,19 +1,33 @@
-<div>
-  <div>
-    <h2>User <%= @user_id %></h2>
-    <p>Number of posts: x</p>
+<section class="user-section">
+  <div class="user-profile">
+    <% if @user.photo.present? %>
+      <%= image_tag('photo.jpg', class: 'img', alt: 'User photo', width: 150, height: 150) %>
+    <% else %>
+      <%= image_tag('photo.jpg', alt: 'User photo', width: 150, height: 150) %>
+    <% end %>
+    <div class="user-details">
+      <h2 class="username">Username: <%= @user.name %></h2>
+      <p class="post-counter">Number of posts: <%= @user.posts_counter %></p>
+    </div>
   </div>
-  <div>
-    <p>Bio</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+  <div class="user-wraps">
+    <h3 class="secundary-text">Bio</h3>
+    <p class="text"><%= @user.bio %></p>
   </div>
-  <div>
-    <p>Post #1</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-  </div>
-  <div>
-    <p>Post #2</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-  </div>
-  <a href="<%= @user_id %>/posts">See all posts</a>
-</div>
+  <% unless @user.recent_posts.empty? %>
+    <div class="user-posts">
+      <% @user.recent_posts.each do |post| %>
+        <%= link_to "/users/#{@user.id}/posts/#{post.id}", class: 'user-wraps' do %>
+          <h3 class="secundary-text">Post #<%= post.id %> <%= post.title %></h3>
+          <p class="text"><%= post.text %></p>
+          <span class="post-counter text">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+  <% end %>
+  <% unless @user.recent_posts.empty? %>
+    <%= link_to "See all posts", "/users/#{@user.id}/posts",  class: "btn secundary-text" %>
+  <% else %>
+  <% end %>
+</section>
