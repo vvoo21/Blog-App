@@ -33,7 +33,7 @@ RSpec.describe 'Users', type: :request do
 
     it 'response body includes correct placeholder text' do
       get user_path(user.id)
-      expect(response.body).to include("#{user.bio}")
+      expect(response.body).to include(user.bio.to_s)
     end
   end
 end
