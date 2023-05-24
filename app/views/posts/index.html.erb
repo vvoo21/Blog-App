@@ -1,21 +1,38 @@
-<div>
-  <div>
-    <h2>Username</h2>
-    <p>Number of posts: x</p>
-  </div>
-
-  <div>
-    <div>
-      <p>Post #1</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-    </div>
-    <div>
-      <ul>
-        <li>username: comment 1</li>
-        <li>username: comment 2</li>
-        <li>username: comment 3</li>
-        <li>username: comment 4</li>
-      </ul>       
+<section class="user-section">
+  <div class="user-profile">
+    <% if @user.photo.present? %>
+      <%= image_tag('photo.jpg', class: 'img', alt: 'User photo', width: 150, height: 150) %>
+    <% else %>
+      <%= image_tag('photo.jpg', alt: 'User photo', width: 150, height: 150) %>
+    <% end %>
+    <div class="user-details">
+      <h2 class="username">Username: <%= @user.name %></h2>
+      <p class="post-counter">Number of posts: <%= @user.posts_counter %></p>
     </div>
   </div>
-</div>
+  <div class="post">
+    <% @user.posts.each do |post| %>
+      <%= link_to "/users/#{@user.id}/posts/#{post.id}", class: 'user-posts' do %>
+        <div class='user-wraps'>
+          <h3 class="secundary-text">Post #<%= post.id %> <%= post.title %></h3>
+          <p class="text"><%= post.text %></p>
+          <span class="post-counter text">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></span>
+        </div>
+        <% unless post.recent_comments.empty? %>
+          <div class="post-comments"> 
+            <p class="text pink">Comments:</p>
+            <% post.recent_comments.each do |comment| %>
+              <p class="text"><%= comment.author.name %>: <span class="brown"> <%= comment.text %> </span> </p>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="post-comments"> 
+            <p class="text pink">Comments:</p>
+            <p class="text">There are no comments</p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <a class="btn secundary-text" href="#">Pagination</a>
+</section>

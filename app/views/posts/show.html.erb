@@ -1,14 +1,24 @@
-<div>
-  <div>
-    <p>Post #1 by user <%= @user_id %></p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariaturLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariaturLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.</p>
+<section class="user-section">
+  <div class="post">
+    <div class='user-wraps'>
+      <div class="flex">
+        <h3 class="secundary-text">Post #<%= @post.id %> <%= @post.title %></h3>
+        <span class="text">Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></span>
+      </div>
+      <p class="text"><%= @post.text %></p>
+    </div>
+    <% unless @post.comments.empty? %>
+      <div class="post-comments"> 
+        <p class="text pink">Comments:</p>
+          <% @post.comments.each do |comment| %>
+            <p class="text"><%= comment.author.name %>: <span class="brown"> <%= comment.text %> </span> </p>
+          <% end %>
+      </div>
+    <% else %>
+      <div class="post-comments"> 
+        <p class="text pink">Comments:</p>
+        <p class="text">There are no comments</p>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <ul>
-      <li>username: comment 1</li>
-      <li>username: comment 2</li>
-      <li>username: comment 3</li>
-      <li>username: comment 4</li>
-    </ul>       
-  </div>
-</div>
+</section>

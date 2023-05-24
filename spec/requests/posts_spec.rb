@@ -15,7 +15,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'response body includes correct placeholder text' do
       get user_posts_path(user.id)
-      expect(response.body).to include('Username')
+      expect(response.body).to include("Username: #{user.name}")
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'response body includes correct placeholder text' do
       get user_post_path(user.id, post.id)
-      expect(response.body).to include("Post #1 by user #{user.id}")
+      expect(response.body).to include('Comments:')
     end
   end
 end

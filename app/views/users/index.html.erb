@@ -1,19 +1,21 @@
-<h1>Users</h1>
-<ul>
-  <li>
-    <a href="users/1">
-      <div>
-        <h2>User name</h2>
-        <p>Number of posts: x</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="users/2">
-      <div>
-        <h2>User name</h2>
-        <p>Number of posts: x</p>
-      </div>
-    </a>
-  </li>
-</ul>
+<section class="users-section">
+  <ul class="user-list">
+    <% @users.order(id: :asc).each do |user| %>
+      <li>
+        <%= link_to user, class: 'user-link' do %>
+          <div class="user-profile">
+            <% if user.photo.present? %>
+              <%= image_tag('photo.jpg', class: 'img', alt: 'User photo', width: 150, height: 150) %>
+            <% else %>
+              <%= image_tag('photo.jpg', alt: 'User photo', width: 150, height: 150) %>
+            <% end %>
+            <div class="user-details">
+              <h2 class="username">Username: <%= user.name %></h2>
+              <p class="post-counter">Number of posts: <%= user.posts_counter %></p>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>
