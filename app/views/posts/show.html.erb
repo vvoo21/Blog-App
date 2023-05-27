@@ -20,5 +20,6 @@
         <p class="text">There are no comments</p>
       </div>
     <% end %>
+    <%= link_to "Add a comment", new_user_post_comment_path(user_id: @post.author.id, post_id: @post.id), class: "btn secundary-text" %>
   </div>
 </section>
