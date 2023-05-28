@@ -7,22 +7,21 @@
       </div>
       <p class="text"><%= @post.text %></p>
       <div class="new-like">
-      <%= render partial: "like", locals: { like: Like.new, post_id: @post.id, user_id: @post.author.id } %>
-</div>
+        <%= render partial: "like", locals: { like: Like.new, post_id: @post.id, user_id: @post.author.id } %>
+      </div>
     </div>
-    <% unless @post.comments.empty? %>
-      <div class="post-comments"> 
-        <p class="text pink">Comments:</p>
-          <% @post.comments.each do |comment| %>
-            <p class="text"><%= comment.author.name %>: <span class="brown"> <%= comment.text %> </span> </p>
-          <% end %>
-      </div>
-    <% else %>
-      <div class="post-comments"> 
-        <p class="text pink">Comments:</p>
+    <div class="post-comments"> 
+      <p class="text pink">Comments:</p>
+      <% if @post.comments.empty? %>
         <p class="text">There are no comments</p>
-      </div>
-    <% end %>
+      <% else %>
+        <% @post.comments.each do |comment| %>
+          <p class="text">
+            <%= comment.author.name %>: <span class="brown"> <%= comment.text %> </span>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
     <%= link_to "Add a comment", new_user_post_comment_path(user_id: @post.author.id, post_id: @post.id), class: "btn secundary-text" %>
   </div>
 </section>

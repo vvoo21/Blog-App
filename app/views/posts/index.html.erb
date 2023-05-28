@@ -18,17 +18,17 @@
           <p class="text"><%= post.text %></p>
           <span class="post-counter text">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></span>
         </div>
-        <% unless post.recent_comments.empty? %>
+        <% if post.recent_comments.empty? %>
+          <div class="post-comments"> 
+            <p class="text pink">Comments:</p>
+            <p class="text">There are no comments</p>
+          </div>
+        <% else %>
           <div class="post-comments"> 
             <p class="text pink">Comments:</p>
             <% post.recent_comments.each do |comment| %>
               <p class="text"><%= comment.author.name %>: <span class="brown"> <%= comment.text %> </span> </p>
             <% end %>
-          </div>
-        <% else %>
-          <div class="post-comments"> 
-            <p class="text pink">Comments:</p>
-            <p class="text">There are no comments</p>
           </div>
         <% end %>
       <% end %>

@@ -26,9 +26,8 @@
     </div>
   <% else %>
   <% end %>
-  <% unless @user.recent_posts.empty? %>
+  <% if @user.recent_posts.present? %>
     <%= link_to "See all posts", user_posts_path(@user),  class: "btn secundary-text" %>
     <%= link_to "New post", new_user_post_path(@user), class: "btn secundary-text" %>
-  <% else %>
   <% end %>
 </section>
