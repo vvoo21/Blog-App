@@ -15,7 +15,7 @@ class Post < ApplicationRecord
 
   # A method which returns the 5 most recent comments for a given post.
   def recent_comments
-    comments.last(5)
+    comments.order(created_at: :asc).limit(5)
   end
 
   # A method that updates the posts counter for a user.
