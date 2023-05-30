@@ -4,7 +4,7 @@ RSpec.describe 'Posts', type: :request do
   let!(:user) { User.create(name: 'Anna', photo: 'https://pixabay.com/photos/cat-baby-profile-animal-shelter-2671159/', bio: 'A passionate full-stack developer', posts_counter: 0) }
   describe 'GET /index' do
     it 'response status is success' do
-      get user_posts_path(user.id)
+      get user_posts_path(user)
       expect(response.status).to eq(200)
     end
 
