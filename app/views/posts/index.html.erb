@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="post">
-    <% @user.posts.each do |post| %>
+    <% @posts.each do |post| %>
       <%= link_to "/users/#{@user.id}/posts/#{post.id}", class: 'user-posts' do %>
         <div class='user-wraps'>
           <h3 class="secundary-text">Post #<%= post.id %> <%= post.title %></h3>
