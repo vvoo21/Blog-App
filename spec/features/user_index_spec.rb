@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe 'User Index Page', type: :feature do
   before(:each) do
     @user = User.create(
-    name: 'Alex',
-    photo: 'https://www.freepik.com/free-photo/closeup-photo-young-lady-looking-down-hedshot-high-quality-photo_26245993.htm#from_view=detail_alsolike',
-    bio: 'A modern artist',
-    posts_counter: 5
-  )
+      name: 'Alex',
+      photo: 'https://www.freepik.com/free-photo/closeup-photo-young-lady-looking-down-hedshot-high-quality-photo_26245993.htm#from_view=detail_alsolike',
+      bio: 'A modern artist',
+      posts_counter: 5
+    )
   end
 
   it 'displays a container for the users' do

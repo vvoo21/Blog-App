@@ -2,11 +2,11 @@ require 'rails_helper'
 RSpec.describe 'User Show Page', type: :feature do
   before(:each) do
     @user = User.create(
-    name: 'Timothy',
-    photo: 'https://unsplash.com/es/fotos/04OtkxJTQR4',
-    bio: 'I enjoy coding',
-    posts_counter: 4
-  )
+      name: 'Timothy',
+      photo: 'https://unsplash.com/es/fotos/04OtkxJTQR4',
+      bio: 'I enjoy coding',
+      posts_counter: 4
+    )
     @post = Post.create(
       title: 'Database',
       text: 'Relational database',
