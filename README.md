@@ -50,7 +50,14 @@
 
 ### Key Features <a name="key-features"></a>
 
-- Create a data model.
+- Creating a data model.
+- Processing data in models.
+- Validations and Model specs.
+- Setup and controllers.
+- Controllers specs.
+- Views.
+- Forms.
+- Integration specs for Views and fixing n+1 problems.
 
 ## Entity Relationship Diagram <a name="entity-relationship-diagram"></a>
 
@@ -124,11 +131,22 @@ To run the project tests, execute the following command:
 - Twitter: [@vaneoliverosp](https://twitter.com/vaneoliverosp)
 - LinkedIn: [vaneoliverosp](https://www.linkedin.com/in/vaneoliverosp/)
 
+👤 **Fithamlak**
+
+- GitHub: [@fithamlak](https://github.com/fithamlak)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/fithamlak-fikrie)
+
+👤  **Gerson Sanchez**
+
+- Github [@gerson](https://github.com/gealsanchez)
+- Twitter: [@gealsanchez](https://twitter.com/gealsanchez)
+- LinkedIn: [gealsanchez](https://www.linkedin.com/in/gerson-sanchez-88309b57/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Insert new data
+- Add User profiles
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
