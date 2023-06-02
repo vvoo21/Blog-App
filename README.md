@@ -58,6 +58,7 @@
 - Views.
 - Forms.
 - Integration specs for Views and fixing n+1 problems.
+- Use devise gem for authentication.
 
 ## Entity Relationship Diagram <a name="entity-relationship-diagram"></a>
 
