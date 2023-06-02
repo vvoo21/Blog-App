@@ -12,6 +12,8 @@ gem 'rails-controller-testing'
 
 gem 'activesupport', '~> 7.0.5'
 
+gem 'devise'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
